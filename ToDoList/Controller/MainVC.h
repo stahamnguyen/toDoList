@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddItemVC.h"
 
-@interface MainVC : UIViewController
+@interface MainVC : UIViewController <AddItemProtocol>
+
+@property (nonatomic, strong) NSMutableArray *items;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

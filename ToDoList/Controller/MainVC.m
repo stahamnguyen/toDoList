@@ -16,6 +16,13 @@
 
 static NSString *cellId = @"cellId";
 
+- (NSMutableArray *)items {
+    if(!_items) {
+        _items = [[NSMutableArray alloc] init];
+    }
+    return _items;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -26,7 +33,7 @@ static NSString *cellId = @"cellId";
 #pragma mark - UITableView methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -34,7 +41,8 @@ static NSString *cellId = @"cellId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     
     //Configure cell
-    cell.textLabel.text = @"Item";
+    Item *item = [self.items objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.name;
     
     return cell;
 }
@@ -42,8 +50,26 @@ static NSString *cellId = @"cellId";
 #pragma mark - Buttons methods
 
 - (IBAction)addButtonPressed:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"mainVCToAddItemVC" sender:sender];
 }
 
 - (IBAction)editButtonPressed:(UIBarButtonItem *)sender {
+    
+    
 }
+
+#pragma mark - AddItemProtocol methods
+
+-(void)createdItem:(Item *)item {
+    
+    [self.items addObject:item];
+    [self dismissViewControllerAnimated:true completion:nil];
+    [self.tableView reloadData];
+}
+
+-(void)cancelled {
+    
+}
+
+
 @end

@@ -19,24 +19,31 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark - Button methods
 
 - (IBAction)addItemButtonPressed:(UIButton *)sender {
+    
+    Item *item = [self createNewItem];
+    
+    [self.delegate createdItem:item];
 }
 
 - (IBAction)cancelButtonPressed:(UIButton *)sender {
+    
+    [self.delegate cancelled];
 }
+
+#pragma mark - Custom methods
+
+- (Item *)createNewItem {
+    Item *item = [[Item alloc] init];
+    item.name = self.nameTextField.text;
+    item.location = self.locationTextField.text;
+    item.performer = self.performerTextField.text;
+    item.detail = self.detailTextView.text;
+    item.dateOfCompletion = self.datePicker.date;
+    
+    return item;
+}
+
 @end

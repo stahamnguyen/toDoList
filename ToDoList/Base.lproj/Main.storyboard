@@ -89,25 +89,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Item name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tdy-95-OVA">
-                                <rect key="frame" x="20" y="20" width="280" height="30"/>
+                                <rect key="frame" x="20" y="30" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyl-Co-n1b">
-                                <rect key="frame" x="20" y="58" width="280" height="30"/>
+                                <rect key="frame" x="20" y="68" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Performer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4PO-0t-byG">
-                                <rect key="frame" x="20" y="96" width="280" height="30"/>
+                                <rect key="frame" x="20" y="106" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" text="Details" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RnL-Gq-sB6">
-                                <rect key="frame" x="20" y="134" width="280" height="127"/>
+                                <rect key="frame" x="20" y="144" width="280" height="117"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -159,18 +159,16 @@
                             <constraint firstItem="TgK-vg-0Ka" firstAttribute="trailing" secondItem="Tdy-95-OVA" secondAttribute="trailing" constant="20" id="sKC-lO-TXp"/>
                             <constraint firstItem="nyl-Co-n1b" firstAttribute="top" secondItem="Tdy-95-OVA" secondAttribute="bottom" constant="8" id="vH9-CY-4dL"/>
                             <constraint firstItem="ipU-Qv-QSQ" firstAttribute="leading" secondItem="TgK-vg-0Ka" secondAttribute="leading" constant="20" id="xHl-v8-38b"/>
-                            <constraint firstItem="Tdy-95-OVA" firstAttribute="top" secondItem="TgK-vg-0Ka" secondAttribute="top" id="xid-S1-3sh"/>
+                            <constraint firstItem="Tdy-95-OVA" firstAttribute="top" secondItem="TgK-vg-0Ka" secondAttribute="top" constant="10" id="xid-S1-3sh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TgK-vg-0Ka"/>
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="ipU-Qv-QSQ" id="YEO-Xi-b2T"/>
                         <outlet property="detailTextView" destination="RnL-Gq-sB6" id="dcv-Vt-0ms"/>
-                        <outlet property="heightTextField" destination="4PO-0t-byG" id="0mg-V1-e7u"/>
                         <outlet property="locationTextField" destination="nyl-Co-n1b" id="l3G-GC-pJX"/>
                         <outlet property="nameTextField" destination="nyl-Co-n1b" id="wF1-RO-SaD"/>
                         <outlet property="performerTextField" destination="4PO-0t-byG" id="3ld-RG-QUa"/>
-                        <outlet property="weightTextField" destination="nyl-Co-n1b" id="nJn-Zj-LZM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nl0-fY-p9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -266,11 +264,9 @@
                     <connections>
                         <outlet property="dateLabel" destination="183-4x-LQZ" id="2mY-FZ-QZx"/>
                         <outlet property="detailLabel" destination="74f-29-tS3" id="PLz-Jr-mO7"/>
-                        <outlet property="lengthHeightLabel" destination="9zc-Vw-UCo" id="bfb-83-TaW"/>
                         <outlet property="locationLabel" destination="aVv-SC-xLZ" id="Qop-QK-Lmn"/>
                         <outlet property="nameLabel" destination="JXm-Qc-jR7" id="6xb-gG-INn"/>
                         <outlet property="performerLabel" destination="9zc-Vw-UCo" id="2jb-W9-dAK"/>
-                        <outlet property="weightLabel" destination="aVv-SC-xLZ" id="uPa-Jc-47q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zg-fM-vyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,11 +351,9 @@
                     <connections>
                         <outlet property="datePicker" destination="gxV-4h-tN0" id="bj3-tF-b8g"/>
                         <outlet property="detailTextView" destination="ee1-MU-swg" id="QpP-61-1X5"/>
-                        <outlet property="lengthHeightTextField" destination="poz-93-ex6" id="iTw-BT-2jd"/>
                         <outlet property="locationTextField" destination="ehn-lu-juF" id="TeT-kw-0Wl"/>
                         <outlet property="nameTextField" destination="1E3-bG-soS" id="0JX-2c-3fJ"/>
                         <outlet property="performerTextField" destination="poz-93-ex6" id="6yV-z2-Jq1"/>
-                        <outlet property="weightTextField" destination="ehn-lu-juF" id="es0-AG-uBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoZ-BM-iSN" userLabel="First Responder" sceneMemberID="firstResponder"/>

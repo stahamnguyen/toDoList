@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
+
+@protocol AddItemProtocol <NSObject>
+
+- (void)createdItem: (Item *) item;
+- (void)cancelled;
+
+@end
 
 @interface AddItemVC : UIViewController
+
+@property (weak, nonatomic) id <AddItemProtocol> delegate;
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
