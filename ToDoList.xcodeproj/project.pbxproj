@@ -38,6 +38,7 @@
 		EB44ADE11F8CFC1F00E55769 /* EditItemVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditItemVC.m; sourceTree = "<group>"; };
 		EB44ADE31F8D063700E55769 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		EB44ADE41F8D063700E55769 /* Item.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		EB44ADE71F8D08C900E55769 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 		EB44ADC01F8CD04600E55769 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				EB44ADE61F8D089000E55769 /* PCH Files */,
 				EB44ADC11F8CD04600E55769 /* AppDelegate.h */,
 				EB44ADC21F8CD04600E55769 /* AppDelegate.m */,
 				EB44ADD91F8CDE3300E55769 /* Controller */,
@@ -113,6 +115,14 @@
 				EB44ADE11F8CFC1F00E55769 /* EditItemVC.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		EB44ADE61F8D089000E55769 /* PCH Files */ = {
+			isa = PBXGroup;
+			children = (
+				EB44ADE71F8D08C900E55769 /* PrefixHeader.pch */,
+			);
+			path = "PCH Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,6 +338,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YH75Q9DPAZ;
+				GCC_PREFIX_HEADER = "/Users/welcome/Desktop/Coding/iOS/ToDoList/ToDoList/PCH Files/PrefixHeader.pch";
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Staham.ToDoList;
@@ -342,6 +353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YH75Q9DPAZ;
+				GCC_PREFIX_HEADER = "/Users/welcome/Desktop/Coding/iOS/ToDoList/ToDoList/PCH Files/PrefixHeader.pch";
 				INFOPLIST_FILE = ToDoList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Staham.ToDoList;

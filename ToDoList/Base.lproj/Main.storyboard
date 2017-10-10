@@ -94,13 +94,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyl-Co-n1b">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyl-Co-n1b">
                                 <rect key="frame" x="20" y="58" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Length/Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4PO-0t-byG">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Performer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4PO-0t-byG">
                                 <rect key="frame" x="20" y="96" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -167,7 +167,9 @@
                         <outlet property="datePicker" destination="ipU-Qv-QSQ" id="YEO-Xi-b2T"/>
                         <outlet property="detailTextView" destination="RnL-Gq-sB6" id="dcv-Vt-0ms"/>
                         <outlet property="heightTextField" destination="4PO-0t-byG" id="0mg-V1-e7u"/>
-                        <outlet property="nameTextField" destination="Tdy-95-OVA" id="DPP-26-OPK"/>
+                        <outlet property="locationTextField" destination="nyl-Co-n1b" id="l3G-GC-pJX"/>
+                        <outlet property="nameTextField" destination="nyl-Co-n1b" id="wF1-RO-SaD"/>
+                        <outlet property="performerTextField" destination="4PO-0t-byG" id="3ld-RG-QUa"/>
                         <outlet property="weightTextField" destination="nyl-Co-n1b" id="nJn-Zj-LZM"/>
                     </connections>
                 </viewController>
@@ -192,13 +194,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVv-SC-xLZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVv-SC-xLZ">
                                         <rect key="frame" x="0.0" y="28.5" width="280" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Length/Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zc-Vw-UCo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Performer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zc-Vw-UCo">
                                         <rect key="frame" x="0.0" y="57" width="280" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -265,7 +267,9 @@
                         <outlet property="dateLabel" destination="183-4x-LQZ" id="2mY-FZ-QZx"/>
                         <outlet property="detailLabel" destination="74f-29-tS3" id="PLz-Jr-mO7"/>
                         <outlet property="lengthHeightLabel" destination="9zc-Vw-UCo" id="bfb-83-TaW"/>
+                        <outlet property="locationLabel" destination="aVv-SC-xLZ" id="Qop-QK-Lmn"/>
                         <outlet property="nameLabel" destination="JXm-Qc-jR7" id="6xb-gG-INn"/>
+                        <outlet property="performerLabel" destination="9zc-Vw-UCo" id="2jb-W9-dAK"/>
                         <outlet property="weightLabel" destination="aVv-SC-xLZ" id="uPa-Jc-47q"/>
                     </connections>
                 </viewController>
@@ -287,13 +291,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Weight" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehn-lu-juF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ehn-lu-juF">
                                 <rect key="frame" x="20" y="110" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Length/Height" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="poz-93-ex6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Performer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="poz-93-ex6">
                                 <rect key="frame" x="20" y="148" width="280" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -352,7 +356,9 @@
                         <outlet property="datePicker" destination="gxV-4h-tN0" id="bj3-tF-b8g"/>
                         <outlet property="detailTextView" destination="ee1-MU-swg" id="QpP-61-1X5"/>
                         <outlet property="lengthHeightTextField" destination="poz-93-ex6" id="iTw-BT-2jd"/>
+                        <outlet property="locationTextField" destination="ehn-lu-juF" id="TeT-kw-0Wl"/>
                         <outlet property="nameTextField" destination="1E3-bG-soS" id="0JX-2c-3fJ"/>
+                        <outlet property="performerTextField" destination="poz-93-ex6" id="6yV-z2-Jq1"/>
                         <outlet property="weightTextField" destination="ehn-lu-juF" id="es0-AG-uBe"/>
                     </connections>
                 </viewController>

@@ -11,8 +11,8 @@
 @interface Item : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic) int weight;
-@property (nonatomic) int lengthHeight;
+@property (nonatomic, strong) NSString *location;
+@property (nonatomic, strong) NSString *performer;
 @property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSDate *dateOfCompletion;
 @property (nonatomic) BOOL isCompleted;
