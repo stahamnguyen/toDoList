@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  Item.m
 //  ToDoList
 //
 //  Created by Staham Nguyen on 10/10/2017.
 //  Copyright © 2017 Staham Nguyen. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "Item.h"
 
-@interface ViewController : UIViewController
-
+@implementation Item
 
 @end
-
