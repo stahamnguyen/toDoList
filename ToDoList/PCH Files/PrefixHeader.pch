@@ -18,5 +18,6 @@
 #define ITEM_DETAIL @"detail"
 #define ITEM_DATE @"date"
 #define ITEM_COMPLETED @"isCompleted"
+#define OBJECT @"object"
 
 #endif /* PrefixHeader_pch */

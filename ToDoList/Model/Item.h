@@ -17,4 +17,6 @@
 @property (nonatomic, strong) NSDate *dateOfCompletion;
 @property (nonatomic) BOOL isCompleted;
 
+- (instancetype)initWithDictionary: (NSDictionary *) itemDictionary;
+
 @end

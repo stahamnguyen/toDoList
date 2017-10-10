@@ -8,7 +8,7 @@
 
 #import "AddItemVC.h"
 
-@interface AddItemVC ()
+@interface AddItemVC () <UITextFieldDelegate>
 
 @end
 
@@ -16,7 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.nameTextField.delegate = self;
+    self.locationTextField.delegate = self;
+    self.performerTextField.delegate = self;
+}
+
+#pragma mark - Text Field methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
 }
 
 #pragma mark - Button methods

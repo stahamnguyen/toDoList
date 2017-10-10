@@ -167,7 +167,7 @@
                         <outlet property="datePicker" destination="ipU-Qv-QSQ" id="YEO-Xi-b2T"/>
                         <outlet property="detailTextView" destination="RnL-Gq-sB6" id="dcv-Vt-0ms"/>
                         <outlet property="locationTextField" destination="nyl-Co-n1b" id="l3G-GC-pJX"/>
-                        <outlet property="nameTextField" destination="nyl-Co-n1b" id="wF1-RO-SaD"/>
+                        <outlet property="nameTextField" destination="Tdy-95-OVA" id="hg2-7H-YOk"/>
                         <outlet property="performerTextField" destination="4PO-0t-byG" id="3ld-RG-QUa"/>
                     </connections>
                 </viewController>

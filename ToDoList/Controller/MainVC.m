@@ -28,6 +28,12 @@ static NSString *cellId = @"cellId";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    NSArray *itemsDictionaryArray = [[NSUserDefaults standardUserDefaults] arrayForKey:OBJECT];
+    for (NSDictionary *itemDictionary in itemsDictionaryArray) {
+        Item *item = [self returnItemfromDictionary:itemDictionary];
+        [self.items addObject:item];
+    }
 }
 
 #pragma mark - UITableView methods
@@ -43,6 +49,7 @@ static NSString *cellId = @"cellId";
     //Configure cell
     Item *item = [self.items objectAtIndex:indexPath.row];
     cell.textLabel.text = item.name;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Location: %@, Performer: %@", item.location, item.performer];
     
     return cell;
 }
@@ -60,16 +67,56 @@ static NSString *cellId = @"cellId";
 
 #pragma mark - AddItemProtocol methods
 
--(void)createdItem:(Item *)item {
+- (void)createdItem:(Item *)item {
     
     [self.items addObject:item];
+    
+    NSMutableArray *itemsDictionaryArray = [[[NSUserDefaults standardUserDefaults] arrayForKey:OBJECT] mutableCopy];
+    if (!itemsDictionaryArray) {
+        itemsDictionaryArray = [[NSMutableArray alloc] init];
+    }
+    NSDictionary *itemDictionary = [self returnDictionaryFromItem:item];
+    [itemsDictionaryArray addObject:itemDictionary];
+    [[NSUserDefaults standardUserDefaults] setObject:itemsDictionaryArray forKey:OBJECT];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [self dismissViewControllerAnimated:true completion:nil];
     [self.tableView reloadData];
 }
 
--(void)cancelled {
+- (void)cancelled {
     
 }
 
+#pragma mark - Segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.destinationViewController isKindOfClass:[AddItemVC class]]) {
+        AddItemVC *destinationVC = segue.destinationViewController;
+        destinationVC.delegate = self;
+    }
+}
+
+#pragma mark - Custom methods
+
+- (NSDictionary *)returnDictionaryFromItem: (Item *) item {
+    
+    NSDictionary *itemDictionary = @{
+                                     ITEM_NAME : item.name,
+                                     ITEM_LOCATION : item.location,
+                                     ITEM_PERFORMER : item.performer,
+                                     ITEM_DETAIL : item.detail,
+                                     ITEM_DATE : item.dateOfCompletion,
+                                     ITEM_COMPLETED : @(item.isCompleted)
+                                     };
+    return itemDictionary;
+}
+
+- (Item *)returnItemfromDictionary: (NSDictionary *) itemDictionary {
+    
+    Item *item = [[Item alloc] initWithDictionary:itemDictionary];
+    return item;
+}
 
 @end
