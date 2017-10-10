@@ -49,7 +49,26 @@ static NSString *cellId = @"cellId";
     //Configure cell
     Item *item = [self.items objectAtIndex:indexPath.row];
     cell.textLabel.text = item.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Location: %@, Performer: %@", item.location, item.performer];
+    
+    //Format date
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:item.dateOfCompletion];
+    cell.detailTextLabel.text = dateString;
+    
+    //Check if the user is late to do a task.
+    BOOL isBehindSchedule = [self isCurrentDate:[NSDate date] greaterThanASpecificDate:item.dateOfCompletion];
+    
+    if (item.isCompleted) {
+        cell.backgroundColor = [UIColor orangeColor];
+    } else if (isBehindSchedule) {
+        cell.backgroundColor = [UIColor redColor];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You're failed, my friend!" message:@"We're running out of time." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:true completion:nil];
+    }
     
     return cell;
 }
@@ -117,6 +136,12 @@ static NSString *cellId = @"cellId";
     
     Item *item = [[Item alloc] initWithDictionary:itemDictionary];
     return item;
+}
+
+- (BOOL) isCurrentDate: (NSDate *) currentDate greaterThanASpecificDate: (NSDate *) specificDate {
+    NSTimeInterval currentDateTimeInterval = [currentDate timeIntervalSince1970];
+    NSTimeInterval specificDateTimeInterval = [specificDate timeIntervalSince1970];
+    return currentDateTimeInterval > specificDateTimeInterval;
 }
 
 @end
