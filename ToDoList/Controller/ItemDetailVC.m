@@ -16,7 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.nameLabel.text = self.item.name;
+    self.locationLabel.text = self.item.location;
+    self.performerLabel.text = self.item.performer;
+    self.detailLabel.text = self.item.detail;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *dateString = [dateFormatter stringFromDate:self.item.dateOfCompletion];
+    self.dateLabel.text = dateString;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
 
 @interface ItemDetailVC : UIViewController
+
+@property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *performerLabel;

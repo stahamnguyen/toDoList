@@ -7,6 +7,7 @@
 //
 
 #import "MainVC.h"
+#import "ItemDetailVC.h"
 
 @interface MainVC () <UITableViewDataSource, UITableViewDelegate>
 
@@ -129,6 +130,10 @@ static NSString *cellId = @"cellId";
     [self saveItemsToNSUserDefaults];
 }
 
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"mainVCToItemDetailVC" sender:indexPath];
+}
+
 
 #pragma mark - Buttons methods
 
@@ -170,6 +175,15 @@ static NSString *cellId = @"cellId";
     if ([segue.destinationViewController isKindOfClass:[AddItemVC class]]) {
         AddItemVC *destinationVC = segue.destinationViewController;
         destinationVC.delegate = self;
+    } else if ([sender isKindOfClass:[NSIndexPath class]]) {
+        
+        if ([segue.destinationViewController isKindOfClass:[ItemDetailVC class]]) {
+            ItemDetailVC *itemDetailVC = segue.destinationViewController;
+            NSIndexPath *indexPath = sender;
+            
+            Item *item = [self.items objectAtIndex:indexPath.row];
+            itemDetailVC.item = item;
+        }
     }
 }
 
