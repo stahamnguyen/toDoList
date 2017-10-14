@@ -116,6 +116,20 @@ static NSString *cellId = @"cellId";
     }
 }
 
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    return true;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
+    
+    Item *item = [self.items objectAtIndex:sourceIndexPath.row];
+    [self.items removeObjectAtIndex:sourceIndexPath.row];
+    [self.items insertObject:item atIndex:destinationIndexPath.row];
+    
+    [self saveItemsToNSUserDefaults];
+}
+
+
 #pragma mark - Buttons methods
 
 - (IBAction)addButtonPressed:(UIBarButtonItem *)sender {
@@ -123,8 +137,7 @@ static NSString *cellId = @"cellId";
 }
 
 - (IBAction)editButtonPressed:(UIBarButtonItem *)sender {
-    
-    
+    [self.tableView setEditing:!self.tableView.editing];
 }
 
 #pragma mark - AddItemProtocol methods
@@ -222,6 +235,19 @@ static NSString *cellId = @"cellId";
     [alertController addAction:alertAction];
     [self presentViewController:alertController animated:true completion:nil];
     
+}
+
+- (void)saveItemsToNSUserDefaults {
+    
+    NSMutableArray *itemsDictionaryArray = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [self.items count]; i++) {
+        NSDictionary *itemDictionary = [self returnDictionaryFromItem:self.items[i]];
+        [itemsDictionaryArray addObject:itemDictionary];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:itemsDictionaryArray forKey:OBJECT];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
