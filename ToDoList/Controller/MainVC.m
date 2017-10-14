@@ -166,8 +166,30 @@ static NSString *cellId = @"cellId";
 }
 
 - (void)changeCompletionStatusOfItemAt: (NSIndexPath *)indexPath {
+    //Process data
     Item *selectedItem = [self.items objectAtIndex:indexPath.row];
+    
+    NSMutableArray *itemsDictionaryArray = [[[NSUserDefaults standardUserDefaults] arrayForKey:OBJECT] mutableCopy];
+    
+    if (!itemsDictionaryArray) {
+        itemsDictionaryArray = [[NSMutableArray alloc] init];
+    }
+    [itemsDictionaryArray removeObjectAtIndex:indexPath.row];
+    
     selectedItem.isCompleted = !selectedItem.isCompleted;
+    
+    NSDictionary *itemsDictionary = [self returnDictionaryFromItem:selectedItem];
+    [itemsDictionaryArray insertObject:itemsDictionary atIndex:indexPath.row];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:itemsDictionaryArray forKey:OBJECT];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    //Show alert
+    if (selectedItem.isCompleted) {
+        [self createAlertWithTitle:@"Task completed" withMessage:nil andActionTitle:@"OK"];
+    } else {
+        [self createAlertWithTitle:@"You're failed, my friend!" withMessage:@"We're running out of time." andActionTitle:@"OK"];
+    }
 }
 
 - (void)createAlertWithTitle: (NSString *)title withMessage: (NSString *)message andActionTitle: (NSString *)actionTitle {
