@@ -168,6 +168,13 @@ static NSString *cellId = @"cellId";
     
 }
 
+
+#pragma mark - Item Detail Protocol Methods
+
+- (void)backButtonPressed {
+    [self dismissViewControllerAnimated:true completion:nil];
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -183,6 +190,7 @@ static NSString *cellId = @"cellId";
             
             Item *item = [self.items objectAtIndex:indexPath.row];
             itemDetailVC.item = item;
+            itemDetailVC.delegate = self;
         }
     }
 }

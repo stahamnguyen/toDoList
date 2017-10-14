@@ -8,7 +8,7 @@
 
 #import "EditItemVC.h"
 
-@interface EditItemVC ()
+@interface EditItemVC () <UITextFieldDelegate>
 
 @end
 
@@ -16,23 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.nameTextField.delegate = self;
+    self.locationTextField.delegate = self;
+    self.performerTextField.delegate = self;
+    
+    self.nameTextField.text = self.item.name;
+    self.locationTextField.text = self.item.location;
+    self.performerTextField.text = self.item.performer;
+    self.detailTextView.text = self.item.detail;
+    self.datePicker.date = self.item.dateOfCompletion;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
+#pragma mark - Text Field methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
 }
-*/
 
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
 }

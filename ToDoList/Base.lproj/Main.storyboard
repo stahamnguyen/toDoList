@@ -223,7 +223,6 @@
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Edit"/>
                                         <connections>
-                                            <action selector="editButtonPressed:" destination="g8d-pY-bAM" eventType="touchUpInside" id="VCZ-jj-InM"/>
                                             <segue destination="Jhq-It-5AH" kind="presentation" identifier="itemDetailVCToEditItemVC" id="9xq-TI-dxm"/>
                                         </connections>
                                     </button>

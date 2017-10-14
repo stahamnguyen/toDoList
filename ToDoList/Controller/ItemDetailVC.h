@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Item.h"
 
+@protocol ItemDetailVCProtocol <NSObject>
+
+- (void)backButtonPressed;
+
+@end
+
+
 @interface ItemDetailVC : UIViewController
 
 @property (strong, nonatomic) Item *item;
+@property (weak, nonatomic) id <ItemDetailVCProtocol> delegate;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *performerLabel;

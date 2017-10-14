@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AddItemVC.h"
+#import "ItemDetailVC.h"
 
-@interface MainVC : UIViewController <AddItemProtocol>
+@interface MainVC : UIViewController <AddItemProtocol, ItemDetailVCProtocol>
 
 @property (nonatomic, strong) NSMutableArray *items;
 

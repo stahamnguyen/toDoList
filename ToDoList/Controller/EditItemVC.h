@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
 
 @interface EditItemVC : UIViewController
 
+@property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *performerTextField;

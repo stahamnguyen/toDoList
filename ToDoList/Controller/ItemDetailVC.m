@@ -7,6 +7,7 @@
 //
 
 #import "ItemDetailVC.h"
+#import "EditItemVC.h"
 
 @interface ItemDetailVC ()
 
@@ -28,24 +29,18 @@
     self.dateLabel.text = dateString;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)editButtonPressed:(UIButton *)sender {
-}
-
 - (IBAction)backButtonPressed:(UIButton *)sender {
+    [self.delegate backButtonPressed];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.destinationViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navigationVC = segue.destinationViewController;
+        EditItemVC *editItemVC = [navigationVC viewControllers][0];
+        
+        editItemVC.item = self.item;
+    }
+}
+
 @end
