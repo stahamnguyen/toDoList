@@ -36,9 +36,29 @@
     return true;
 }
 
+
+#pragma mark - Buttons methods
+
 - (IBAction)cancelButtonPressed:(UIBarButtonItem *)sender {
+    [self.delegate cancelButtonPressed];
 }
 
 - (IBAction)saveButtonPressed:(UIBarButtonItem *)sender {
+    
+    [self modifyItem];
+    [self.delegate modifiedItems];
 }
+
+
+#pragma mark - Custom methods
+
+- (void)modifyItem {
+    
+    self.item.name = self.nameTextField.text;
+    self.item.location = self.locationTextField.text;
+    self.item.performer = self.performerTextField.text;
+    self.item.detail = self.detailTextView.text;
+    self.item.dateOfCompletion = self.datePicker.date;
+}
+
 @end

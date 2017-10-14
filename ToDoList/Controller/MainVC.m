@@ -175,6 +175,11 @@ static NSString *cellId = @"cellId";
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
+- (void)itemModified {
+    [self saveItemsToNSUserDefaults];
+    [self.tableView reloadData];
+}
+
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

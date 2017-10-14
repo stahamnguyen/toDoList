@@ -9,8 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "Item.h"
 
+@protocol EditItemVCProtocol <NSObject>
+
+- (void)cancelButtonPressed;
+- (void)modifiedItems;
+
+@end
+
+
 @interface EditItemVC : UIViewController
 
+@property (weak, nonatomic) id <EditItemVCProtocol> delegate;
 @property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *locationTextField;

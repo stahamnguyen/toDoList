@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "Item.h"
+#import "EditItemVC.h"
 
 @protocol ItemDetailVCProtocol <NSObject>
 
 - (void)backButtonPressed;
+- (void)itemModified;
 
 @end
 
 
-@interface ItemDetailVC : UIViewController
+@interface ItemDetailVC : UIViewController <EditItemVCProtocol>
 
 @property (strong, nonatomic) Item *item;
 @property (weak, nonatomic) id <ItemDetailVCProtocol> delegate;
@@ -26,7 +28,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
-- (IBAction)editButtonPressed:(UIButton *)sender;
 - (IBAction)backButtonPressed:(UIButton *)sender;
 
 @end
