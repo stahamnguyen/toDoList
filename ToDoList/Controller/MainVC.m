@@ -30,8 +30,11 @@ static NSString *cellId = @"cellId";
     self.tableView.dataSource = self;
     
     NSArray *itemsDictionaryArray = [[NSUserDefaults standardUserDefaults] arrayForKey:OBJECT];
+    
     for (NSDictionary *itemDictionary in itemsDictionaryArray) {
         Item *item = [self returnItemfromDictionary:itemDictionary];
+        item.showLatenessAlertToUser = [[NSUserDefaults standardUserDefaults] boolForKey:SHOW_LATENESS_ALERT];
+        item.showCompletionAlertToUser = [[NSUserDefaults standardUserDefaults] boolForKey:SHOW_COMPLETION_ALERT];
         [self.items addObject:item];
     }
 }
@@ -60,17 +63,35 @@ static NSString *cellId = @"cellId";
     BOOL isBehindSchedule = [self isCurrentDate:[NSDate date] greaterThanASpecificDate:item.dateOfCompletion];
     
     if (item.isCompleted) {
-        cell.backgroundColor = [UIColor orangeColor];
+        cell.backgroundColor = [UIColor greenColor];
+        
+        if (item.showCompletionAlertToUser) {
+            item.showCompletionAlertToUser = false;
+            [[NSUserDefaults standardUserDefaults] setBool:item.showCompletionAlertToUser forKey:SHOW_COMPLETION_ALERT];
+            
+            [self createAlertWithTitle:@"Task completed" withMessage:nil andActionTitle:@"OK"];
+        }
+        
     } else if (isBehindSchedule) {
         cell.backgroundColor = [UIColor redColor];
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"You're failed, my friend!" message:@"We're running out of time." preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:okAction];
         
-        [self presentViewController:alertController animated:true completion:nil];
+        if (item.showLatenessAlertToUser) {
+            item.showLatenessAlertToUser = false;
+            [[NSUserDefaults standardUserDefaults] setBool:item.showLatenessAlertToUser forKey:SHOW_LATENESS_ALERT];
+            
+            [self createAlertWithTitle:@"You're failed, my friend!" withMessage:@"We're running out of time." andActionTitle:@"OK"];
+        }
+    } else {
+        cell.backgroundColor = [UIColor whiteColor];
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self changeCompletionStatusOfItemAt:indexPath];
+    [tableView reloadData];
 }
 
 #pragma mark - Buttons methods
@@ -138,10 +159,25 @@ static NSString *cellId = @"cellId";
     return item;
 }
 
-- (BOOL) isCurrentDate: (NSDate *) currentDate greaterThanASpecificDate: (NSDate *) specificDate {
+- (BOOL)isCurrentDate: (NSDate *) currentDate greaterThanASpecificDate: (NSDate *) specificDate {
     NSTimeInterval currentDateTimeInterval = [currentDate timeIntervalSince1970];
     NSTimeInterval specificDateTimeInterval = [specificDate timeIntervalSince1970];
     return currentDateTimeInterval > specificDateTimeInterval;
+}
+
+- (void)changeCompletionStatusOfItemAt: (NSIndexPath *)indexPath {
+    Item *selectedItem = [self.items objectAtIndex:indexPath.row];
+    selectedItem.isCompleted = !selectedItem.isCompleted;
+}
+
+- (void)createAlertWithTitle: (NSString *)title withMessage: (NSString *)message andActionTitle: (NSString *)actionTitle {
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleDefault handler:nil];
+    
+    [alertController addAction:alertAction];
+    [self presentViewController:alertController animated:true completion:nil];
+    
 }
 
 @end

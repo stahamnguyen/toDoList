@@ -19,5 +19,7 @@
 #define ITEM_DATE @"date"
 #define ITEM_COMPLETED @"isCompleted"
 #define OBJECT @"object"
+#define SHOW_COMPLETION_ALERT @"completion"
+#define SHOW_LATENESS_ALERT @"lateness"
 
 #endif /* PrefixHeader_pch */

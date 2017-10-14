@@ -16,6 +16,8 @@
 @property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSDate *dateOfCompletion;
 @property (nonatomic) BOOL isCompleted;
+@property (nonatomic) BOOL showCompletionAlertToUser;
+@property (nonatomic) BOOL showLatenessAlertToUser;
 
 - (instancetype)initWithDictionary: (NSDictionary *) itemDictionary;
 
