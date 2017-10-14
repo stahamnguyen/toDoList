@@ -94,6 +94,28 @@ static NSString *cellId = @"cellId";
     [tableView reloadData];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return true;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.items removeObjectAtIndex:indexPath.row];
+        
+        NSMutableArray *remainingItemsDictionary = [[NSMutableArray alloc] init];
+        
+        for (Item *item in self.items) {
+            [remainingItemsDictionary addObject:[self returnDictionaryFromItem:item]];
+        }
+        
+        [[NSUserDefaults standardUserDefaults] setObject:remainingItemsDictionary forKey:OBJECT];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 #pragma mark - Buttons methods
 
 - (IBAction)addButtonPressed:(UIBarButtonItem *)sender {
