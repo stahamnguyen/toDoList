@@ -1,5 +1,5 @@
 # toDoList
-This is my own project building an iOS application in Objective-C about using NSUserDefaults to store simple data of users in the application/
+This is my own project building an iOS application in Objective-C about using NSUserDefaults to store simple data of users in the application.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
